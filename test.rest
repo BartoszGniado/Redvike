@@ -12,7 +12,7 @@ Content-Disposition: form-data; name="csv"
 
 title
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="Amenity"; filename="Amenity.csv"
+Content-Disposition: form-data; name="csv"; filename="Amenity.csv"
 Content-Type: text/csv
 
 < resources/Amenity.csv

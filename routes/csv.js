@@ -1,13 +1,16 @@
 const express = require('express');
+const csvParser = require('../scripts/csv-parser');
 const csvRouter = express.Router();
 
-csvRouter.post('/parse', (req, res) => {
+csvRouter.post('/parse', async (req, res) => {
   if (!req.files) {
     res.status(400).send('No file uploaded');
   }
   try {
-    // TODO implement tast 3.
-    throw new Error('Not implemanted!');
+    // assume one file
+    const fieldName = Object.keys(req.files)[0];
+    const parsed = await csvParser.parse(req.files[fieldName]);
+    return res.send(parsed);
   } catch (err) {
     console.log(err);
     return res.status(500).send(err);
