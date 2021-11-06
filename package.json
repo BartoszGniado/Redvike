@@ -1,0 +1,25 @@
+{
+  "name": "redvike",
+  "version": "1.0.0",
+  "description": "Redvike recruitment task",
+  "main": "app.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BartoszGniado/Redvike.git"
+  },
+  "author": "bartosz.gniado@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BartoszGniado/Redvike/issues"
+  },
+  "homepage": "https://github.com/BartoszGniado/Redvike#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
