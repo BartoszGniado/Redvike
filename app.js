@@ -1,10 +1,20 @@
 const express = require('express');
+const fileUpload = require('express-fileupload');
 
 const app = express();
+
+app.use(
+  fileUpload({
+    createParentPath: true,
+  })
+);
 
 app.get('/', (req, res) => {
   res.send('𝙷𝚎𝚕𝚕𝚘');
 });
+
+app.use('/reservation', require('./routes/reservation'));
+app.use('/csv', require('./routes/csv'));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {

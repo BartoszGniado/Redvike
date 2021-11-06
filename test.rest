@@ -1,3 +1,19 @@
 // Use humao.rest-client vscode extension to send Request from here
 ###
 GET http://localhost:8000/  
+###
+GET http://localhost:8000/reservation/amenity/12/day/1592611200000
+###
+POST http://localhost:8000/csv/parse
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="csv"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="Amenity"; filename="Amenity.csv"
+Content-Type: text/csv
+
+< resources/Amenity.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
