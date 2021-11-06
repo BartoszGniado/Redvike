@@ -2,9 +2,11 @@ FROM node:16
 
 WORKDIR /app
 
-COPY . .
+COPY package.json .
 
 RUN npm i
+
+COPY . .
 
 ENV PORT=8000
 
