@@ -4,6 +4,8 @@
   "description": "Redvike recruitment task",
   "main": "app.js",
   "scripts": {
+    "start": "node .",
+    "do-nothing": "sleep 300d",
     "devStart": "nodemon app.js"
   },
   "repository": {

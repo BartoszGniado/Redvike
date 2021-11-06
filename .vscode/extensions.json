@@ -4,6 +4,7 @@
         "eamodio.gitlens",
         "gruntfuggly.todo-tree",
         "humao.rest-client",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker"
     ]
 }
