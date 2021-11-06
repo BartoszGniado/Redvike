@@ -4,7 +4,7 @@
   "description": "Redvike recruitment task",
   "main": "app.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon app.js"
   },
   "repository": {
     "type": "git",

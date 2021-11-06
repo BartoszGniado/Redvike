@@ -2,7 +2,7 @@
 ###
 GET http://localhost:8000/  
 ###
-GET http://localhost:8000/reservation/amenity/12/day/1592611200000
+GET http://localhost:8000/reservation/amenity/1/day/1592611200000
 ###
 POST http://localhost:8000/csv/parse
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
