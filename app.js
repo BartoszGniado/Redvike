@@ -1,8 +1,12 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const dbConnect = require('./db/connect');
+const session = require('express-session');
+const passport = require('passport');
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const app = express();
 
@@ -15,12 +19,24 @@ app.use(
 );
 dbConnect.connect();
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+require('./auth/passport-config').init(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.get('/', (req, res) => {
   res.send('𝙷𝚎𝚕𝚕𝚘!');
 });
 
 app.use('/reservation', require('./routes/reservation'));
 app.use('/csv', require('./routes/csv'));
+app.use(require('./routes/auth'));
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
