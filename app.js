@@ -1,7 +1,11 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
+const dbConnect = require('./db/connect');
+
+require('dotenv').config();
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -9,9 +13,10 @@ app.use(
     createParentPath: true,
   })
 );
+dbConnect.connect();
 
 app.get('/', (req, res) => {
-  res.send('𝙷𝚎𝚕𝚕𝚘');
+  res.send('𝙷𝚎𝚕𝚕𝚘!');
 });
 
 app.use('/reservation', require('./routes/reservation'));
