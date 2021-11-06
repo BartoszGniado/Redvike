@@ -1,6 +1,6 @@
 const csvParser = require('../scripts/csv-parser');
 
-exports.getResevations = async ({ filters, sort }) => {
+exports.getResevations = async ({ filters, sort, group }) => {
   var resevations = await csvParser.getResevations();
   for (const filter in filters) {
     resevations = resevations.filter((r) => r[filter] == filters[filter]);
@@ -15,5 +15,12 @@ exports.getResevations = async ({ filters, sort }) => {
     r.amenity = amenity && amenity['name'];
     r.duration = r['end_time'] - r['start_time'];
   });
+  if (group)
+    resevations = resevations.reduce((acc, cur) => {
+      acc[cur[group.by]]
+        ? acc[cur[group.by]].push(cur)
+        : (acc[cur[group.by]] = [cur]);
+      return acc;
+    }, {});
   return resevations;
 };

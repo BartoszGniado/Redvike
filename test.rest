@@ -4,6 +4,8 @@ GET http://localhost:8000/
 ###
 GET http://localhost:8000/reservation/amenity/1/day/1592611200000
 ###
+GET http://localhost:8000/reservation/user/1
+###
 POST http://localhost:8000/csv/parse
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
@@ -12,8 +14,8 @@ Content-Disposition: form-data; name="csv"
 
 title
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="csv"; filename="Amenity.csv"
+Content-Disposition: form-data; name="csv"; filename="Reservations.csv"
 Content-Type: text/csv
 
-< resources/Amenity.csv
+< resources/Reservations.csv
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--

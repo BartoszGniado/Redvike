@@ -28,14 +28,25 @@ reservationRouter.get(
   }
 );
 
-reservationRouter.get('/user/:userId', (req, res) => {
+reservationRouter.get('/user/:userId', async (req, res) => {
   const { userId } = req.params;
   if (!userId) {
     return res.status(400).send('Bad Request');
   }
   try {
-    // TODO implement task 2.
-    throw new Error('Not implemanted!');
+    const result = await reservationService.getResevations({
+      filters: {
+        user_id: userId,
+      },
+      sort: {
+        asc: true,
+        by: 'date',
+      },
+      group: {
+        by: 'date',
+      },
+    });
+    return res.send(result);
   } catch (err) {
     console.log(err);
     return res.status(500).send(err);
