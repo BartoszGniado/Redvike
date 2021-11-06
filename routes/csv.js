@@ -1,8 +1,9 @@
 const express = require('express');
 const csvParser = require('../scripts/csv-parser');
 const csvRouter = express.Router();
+const auth = require('../auth/auth');
 
-csvRouter.post('/parse', async (req, res) => {
+csvRouter.post('/parse', auth.checkAuthenticated, async (req, res) => {
   if (!req.files) {
     res.status(400).send('No file uploaded');
   }
