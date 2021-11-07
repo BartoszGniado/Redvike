@@ -12,5 +12,11 @@ exports.load = async () => {
     const amenities = await csvParser.getAmenities();
     models = amenities.map((r) => new Amenity(r));
     models.forEach((m) => m.save());
+    const User = require('./models/user');
+    const testUser = new User({
+      username: 'user',
+      password: '$2b$10$/XLVGsy2CB90lZCGh3pi8.sl.o9teV6ZOiv/znkpy7dyqnNiEY/72',
+    });
+    testUser.save();
   }
 };

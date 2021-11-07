@@ -11,7 +11,9 @@ const swaggerOptions = {
     info: {
       version: APP_VERSION,
       title: DESCRIPTION,
-      description: 'to test endpoints requiring authorization use /login first',
+      description:
+        'to test endpoints requiring authorization use /login first <br> \
+       user with login/pass user/user is provided',
       contact: {
         name: 'bartosz.gniado@opegieka.pl',
       },

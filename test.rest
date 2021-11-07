@@ -24,8 +24,8 @@ POST http://localhost:8000/register
 Content-Type: application/json
 
 {
-    "username": "user",
-    "password": "user"
+    "username": "user1",
+    "password": "user1"
 }
 ###
 POST http://localhost:8000/login
