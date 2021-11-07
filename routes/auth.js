@@ -39,8 +39,8 @@ authRouter.post('/register', async (req, res) => {
     if (!body || !body.username || !body.password) {
       return res.status(400).send('Bad Request');
     }
-    const userExist = User.find({ username: body.username });
-    if (userExist) {
+    const userExist = await User.find({ username: body.username });
+    if (userExist.length) {
       return res.status(409).send('User exist');
     }
 
