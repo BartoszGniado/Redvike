@@ -1,0 +1,17 @@
+components:
+  schemas:
+    Amenity:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: int
+          description: id
+        name:
+          type: string
+          description: name
+      example:
+        id: 69
+        name: test
