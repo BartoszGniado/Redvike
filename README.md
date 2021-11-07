@@ -10,7 +10,7 @@ To start application run:
 $ docker-compose up
 ```
 
-NOTE: Docker Compose must have version ^2.0.0
+NOTE: require Compose V2: https://docs.docker.com/compose/cli-command/
 
 By default app will run at http://localhost:8000
 
