@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const dbConfig = require('./db.config');
 const dataLoader = require('./satrtupDataLoader');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 exports.connect = () => {
   mongoose.connect(dbConfig.DATABASE_URL, { useNewUrlParser: true });
@@ -12,3 +13,5 @@ exports.connect = () => {
     dataLoader.load();
   });
 };
+
+exports.AutoIncrement = AutoIncrement;

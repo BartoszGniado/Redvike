@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { AutoIncrement } = require('../connect');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -10,5 +11,5 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 });
-
+userSchema.plugin(AutoIncrement, { inc_field: 'id' });
 module.exports = mongoose.model('User', userSchema);
