@@ -5,8 +5,6 @@ const auth = require('../auth/auth');
 exports.init = (passport) => {
   const authenticateUser = async (username, password, done) => {
     const user = await auth.getUser(username);
-    console.log('login user');
-    console.log(user);
     if (user == null) {
       return done(null, false, { message: 'No user with that username' });
     }
