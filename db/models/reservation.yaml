@@ -1,0 +1,48 @@
+components:
+  schemas:
+    Resevation:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: int
+          description: The auto-generated id of the Resevation
+        amenity_id:
+          type: int
+          description: id of amenity
+        user_id:
+          type: int
+          description: id of user
+        start_time:
+          type: int
+          description: Start time – minutes from an hour 00:00, exp. (300 – to 5:00)
+        end_time:
+          type: int
+          description: End time – minutes from an hour 00:00, exp. (300 – to 5:00)
+        date:
+          type: int
+          description: day of reservation - timestamp of the day, hour 00:00
+      example:
+        id: 103
+        name: testowy
+        amenity_id: 1
+        user_id: 4
+        start_time: 540
+        end_time: 1020
+        date: 1592611200000
+
+    ExtResevation:
+      allOf:
+        - $ref: '#/components/schemas/Resevation'
+        - type: object
+          properties:
+            amenity:
+              type: string
+              description: amenity name
+            duration:
+              type: int
+              description: duration of the reservation
+          example:
+            amenity: Navios Maritime Partners LP
+            duration: 480

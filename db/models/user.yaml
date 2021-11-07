@@ -1,0 +1,28 @@
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: username
+        password:
+          type: string
+          description: password
+      example:
+        username: user
+        password: user
+
+    ExtUser:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          properties:
+            id:
+              type: int
+              description: The auto-generated id of the User
+          example:
+            id: 1

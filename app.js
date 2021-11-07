@@ -3,6 +3,7 @@ const fileUpload = require('express-fileupload');
 const dbConnect = require('./db/connect');
 const session = require('express-session');
 const passport = require('passport');
+var cors = require('cors');
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -10,6 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -30,6 +32,21 @@ require('./auth/passport-config').init(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+const swaggerConfig = require('./swagger.config');
+swaggerConfig.initSwagger(app);
+
+/**
+ * @swagger
+ * tags:
+ *   name: Root
+ * /:
+ *  get:
+ *    tags: [Root]
+ *    summary: Serve home page
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
 app.get('/', (req, res) => {
   res.send('𝙷𝚎𝚕𝚕𝚘!');
 });
