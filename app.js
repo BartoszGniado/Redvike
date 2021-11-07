@@ -47,9 +47,7 @@ swaggerConfig.initSwagger(app);
  *      '200':
  *        description: A successful response
  */
-app.get('/', (req, res) => {
-  res.send('𝙷𝚎𝚕𝚕𝚘!');
-});
+app.use(express.static('./static'));
 
 app.use('/reservation', require('./routes/reservation'));
 app.use('/csv', require('./routes/csv'));

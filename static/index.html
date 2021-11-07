@@ -1,0 +1,95 @@
+<!doctype html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="60">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+<link rel="icon" 
+      type="image/png" 
+      href="favicone.webp">
+</head>
+<title>𝙍𝙚𝙙𝙫𝙞𝙠𝙚</title>
+<style>
+  body { text-align: center; padding: 150px; }
+  h1 { font-size: 50px; }
+  body { font: 20px Roboto, sans-serif; color: #333; }
+  article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+  a { color: #1600dc; text-decoration: none; }
+  a:hover { color: #333; text-decoration: none; }
+</style>
+
+<script type="text/javascript" src="template/model/three.js"></script>		
+<script type="text/javascript" src="template/model/ColladaLoader.js"></script>	
+<script  type="module" src="template/OrbitControls.js" ></script>	
+<script type="text/javascript">
+			var container, stats, clock;
+			var camera, scene, renderer, elf;
+			var width = 300;
+			var height = 370;
+
+			setTimeout(init,100);
+
+			function init() {
+				
+				container = document.getElementById( 'spinner' );
+				container.innerHTML = '';
+				camera = new THREE.PerspectiveCamera( 13, width / height, 0.1, 2000 );
+				var zoom = 9.3;
+				camera.position.set( zoom, zoom, zoom );
+				camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
+
+				scene = new THREE.Scene();
+				clock = new THREE.Clock();
+
+				var loadingManager = new THREE.LoadingManager( function() {
+					scene.add( elf );
+				} );
+
+				var loader = new THREE.ColladaLoader( loadingManager );
+				loader.load( 'template/model/wg.dae', function ( collada ) {
+					elf = collada.scene;
+				} );
+
+				renderer = new THREE.WebGLRenderer({ alpha: true,antialias: true });
+				renderer.setClearColor(0xffffff, 0);
+
+				camera.aspect = width / height;
+				camera.updateProjectionMatrix();
+
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
+
+				renderer.setSize(width, height );
+				container.appendChild( renderer.domElement );
+
+			}
+
+			function render() {
+				if(clock){
+					var delta = clock.getDelta();
+
+					if ( elf !== undefined ) {
+						elf.rotation.z += delta * 0.5;
+					}
+
+					renderer.render( scene, camera );
+				}
+			}
+
+			setInterval(function() {
+				render();
+			}, 1000/ 60);
+
+</script>
+<article>
+    <h1>Redvike recruitment task</h1>
+	<p>All of REST API functionality available through generated Swagger documentation. Link below. </p>
+	<a href="/api-docs">REST API docs</a>
+	<div id="spinner"></div>
+    <div>
+        <p><samp style="font-size: 14px;">Bonus! Real interactive 3d ^. Mouse drag & scroll to control.</samp></p>
+        <p>&mdash; Bartosz Gniado</p>
+    </div>
+</article>
+</html>
+
