@@ -10,6 +10,8 @@ To start application run:
 $ docker-compose up
 ```
 
+NOTE: Docker Compose must have version ^2.0.0
+
 By default app will run at http://localhost:8000
 
 To change running port edit var NODE_LOCAL_PORT in .env file
