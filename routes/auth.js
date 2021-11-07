@@ -25,6 +25,10 @@ const authRouter = express.Router();
  *    responses:
  *      201:
  *        description: Created
+ *      400:
+ *        description: Bad Request
+ *      409:
+ *        description: User exist
  *      500:
  *        description: ERROR
  *
@@ -32,15 +36,23 @@ const authRouter = express.Router();
 authRouter.post('/register', async (req, res) => {
   try {
     const body = req.body;
+    if (!body || !body.username || !body.password) {
+      return res.status(400).send('Bad Request');
+    }
+    const userExist = User.find({ username: body.username });
+    if (userExist) {
+      return res.status(409).send('User exist');
+    }
+
     const hashedPassword = await bcrypt.hash(body.password, 10);
     const user = new User({
       username: body.username,
       password: hashedPassword,
     });
     await user.save();
-    res.status(201).send('Created');
+    return res.status(201).send('Created');
   } catch {
-    res.status(500).send('ERROR');
+    return res.status(500).send('ERROR');
   }
 });
 
