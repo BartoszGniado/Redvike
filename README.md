@@ -29,3 +29,9 @@ This is my first experience with mongodb so it's probably not the best usage of 
 Files like .csv and .env shouldn't be in repo (especially things like SESSION_SECRET) but here they are for running simplification (it's only demo app).
 
 Spinning thing on a fancy home page is a thing found on the internet, but I added the control functionality myself.
+
+# Roadmap
+
+- Learn to better use mongodb - sorting, grouping, views usage
+- Put simple React app on client side
+- Experiment with different express middleware
