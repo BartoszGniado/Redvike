@@ -35,3 +35,4 @@ Spinning thing on a fancy home page is a thing found on the internet, but I adde
 - Learn to better use mongodb - sorting, grouping, views usage
 - Put simple React app on client side
 - Experiment with different express middleware
+- Add tests
