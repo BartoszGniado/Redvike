@@ -5,8 +5,8 @@ const reservationService = require('../services/reservations');
 /**
  * @swagger
  * tags:
- *   name: Resevation
- *   description: Resevations operations
+ *   name: Reservation
+ *   description: Reservations operations
  */
 
 /**
@@ -15,7 +15,7 @@ const reservationService = require('../services/reservations');
  *  get:
  *    summary: returns a list of all bookings from amenity with the given id and the selected day
  *    description: The list of reservations is sorted in ascending order by start time
- *    tags: [Resevation]
+ *    tags: [Reservation]
  *    parameters:
  *      - in: path
  *        name: amenityId
@@ -37,7 +37,7 @@ const reservationService = require('../services/reservations');
  *        content:
  *           application/json:
  *             schema:
- *              $ref: '#/components/schemas/ExtResevation'
+ *              $ref: '#/components/schemas/ExtReservation'
  *      401:
  *        description: Unauthorized
  *
@@ -50,7 +50,7 @@ reservationRouter.get(
       return res.status(400).send('Bad Request');
     }
     try {
-      const result = await reservationService.getResevations({
+      const result = await reservationService.getReservations({
         filters: {
           amenity_id: amenityId,
           date: timestamp,
@@ -74,7 +74,7 @@ reservationRouter.get(
  *  get:
  *    summary: returns a list of all bookings for this user grouped by days
  *    description: The list of reservations is sorted in ascending order by date
- *    tags: [Resevation]
+ *    tags: [Reservation]
  *    parameters:
  *      - in: path
  *        name: userId
@@ -94,7 +94,7 @@ reservationRouter.get(
  *                1592611200000:
  *                  type: array
  *                  items:
- *                     $ref: '#/components/schemas/ExtResevation'
+ *                     $ref: '#/components/schemas/ExtReservation'
  *      401:
  *        description: Unauthorized
  *
@@ -105,7 +105,7 @@ reservationRouter.get('/user/:userId', async (req, res) => {
     return res.status(400).send('Bad Request');
   }
   try {
-    const result = await reservationService.getResevations({
+    const result = await reservationService.getReservations({
       filters: {
         user_id: userId,
       },

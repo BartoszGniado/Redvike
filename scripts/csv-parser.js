@@ -7,7 +7,7 @@ exports.parse = async (file) => {
   return csv({ delimiter }).fromString(file.data.toString('utf8'));
 };
 
-exports.getResevations = () => {
+exports.getReservations = () => {
   const filePath = path.resolve('./resources/Reservations.csv');
   return csv({ delimiter }).fromFile(filePath);
 };

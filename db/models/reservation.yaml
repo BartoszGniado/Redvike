@@ -1,13 +1,13 @@
 components:
   schemas:
-    Resevation:
+    Reservation:
       type: object
       required:
         - id
       properties:
         id:
           type: int
-          description: The auto-generated id of the Resevation
+          description: The auto-generated id of the Reservation
         amenity_id:
           type: int
           description: id of amenity
@@ -32,9 +32,9 @@ components:
         end_time: 1020
         date: 1592611200000
 
-    ExtResevation:
+    ExtReservation:
       allOf:
-        - $ref: '#/components/schemas/Resevation'
+        - $ref: '#/components/schemas/Reservation'
         - type: object
           properties:
             amenity:

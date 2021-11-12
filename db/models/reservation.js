@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const resevationSchema = new mongoose.Schema({
+const reservationSchema = new mongoose.Schema({
   id: {
     type: Number,
     required: true,
@@ -27,4 +27,4 @@ const resevationSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Resevation', resevationSchema);
+module.exports = mongoose.model('Reservation', reservationSchema);

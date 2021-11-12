@@ -24,8 +24,8 @@ Simple express Nodejs REST API with simple username - password authentication.
 
 docker-compose builds two containers - one with mongodb and second with actual app.
 
-This is my first experience with mongodb so it's probably not the best usage of it, but it's good learnig opportunity for me.
+This is my first experience with mongodb so it's probably not the best usage of it, but it's good learning opportunity for me.
 
-Files like .csv and .env shoudn't be in repo (especially thigs like SESSION_SECRET) but here they are for running simplification (it's only demo app).
+Files like .csv and .env shouldn't be in repo (especially things like SESSION_SECRET) but here they are for running simplification (it's only demo app).
 
-Spinning thing on a fancy home page is a thing found on the internet, but I added the controll functionality myself.
+Spinning thing on a fancy home page is a thing found on the internet, but I added the control functionality myself.
