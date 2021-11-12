@@ -1,28 +1,38 @@
+openapi: '3.0.2'
+
 components:
   schemas:
     User:
       type: object
       required:
         - username
-        - password
       properties:
         username:
           type: string
           description: username
-        password:
-          type: string
-          description: password
       example:
         username: user
-        password: user
+        
+    UserWithPassword:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          required:
+            - password
+          properties:
+            password:
+              type: string
+              description: password
+          example:
+            password: user
 
-    ExtUser:
+    UserWithId:
       allOf:
         - $ref: '#/components/schemas/User'
         - type: object
           properties:
             id:
-              type: int
+              type: integer
               description: The auto-generated id of the User
           example:
             id: 1

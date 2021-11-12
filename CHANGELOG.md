@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-11-12
+
+### Added
+
+- GET /credentials
+
+### Deprecated
+
+- GET /user - use /credentials instead
+
+### Security
+
+- GET /user & /credentials do NOT return hashed password
+
 ## [1.0.0] - 2021-11-12
 
 ### Added

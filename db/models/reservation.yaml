@@ -1,3 +1,4 @@
+openapi: '3.0.2'
 components:
   schemas:
     Reservation:
@@ -6,22 +7,22 @@ components:
         - id
       properties:
         id:
-          type: int
+          type: integer
           description: The auto-generated id of the Reservation
         amenity_id:
-          type: int
+          type: integer
           description: id of amenity
         user_id:
-          type: int
+          type: integer
           description: id of user
         start_time:
-          type: int
+          type: integer
           description: Start time – minutes from an hour 00:00, exp. (300 – to 5:00)
         end_time:
-          type: int
+          type: integer
           description: End time – minutes from an hour 00:00, exp. (300 – to 5:00)
         date:
-          type: int
+          type: integer
           description: day of reservation - timestamp of the day, hour 00:00
       example:
         id: 103
@@ -41,7 +42,7 @@ components:
               type: string
               description: amenity name
             duration:
-              type: int
+              type: integer
               description: duration of the reservation
           example:
             amenity: Navios Maritime Partners LP

@@ -21,7 +21,7 @@ const authRouter = express.Router();
  *       content:
  *        application/json:
  *           schema:
- *            $ref: '#/components/schemas/User'
+ *            $ref: '#/components/schemas/UserWithPassword'
  *    responses:
  *      201:
  *        description: Created
@@ -66,7 +66,7 @@ authRouter.post('/register', async (req, res) => {
  *       content:
  *        application/json:
  *           schema:
- *            $ref: '#/components/schemas/User'
+ *            $ref: '#/components/schemas/UserWithPassword'
  *    responses:
  *      200:
  *        description: OK
@@ -98,6 +98,29 @@ authRouter.post('/logout', (req, res) => {
  * @swagger
  * /user:
  *  get:
+ *    deprecated: true
+ *    summary: get current logged in user info
+ *    tags: [Auth]
+ *    description: use /credentials instead
+ *    responses:
+ *      200:
+ *        description: OK
+ *        content:
+ *          application/json:
+ *           schema:
+ *            $ref: '#/components/schemas/UserWithId'
+ *      401:
+ *        description: Unauthorized
+ *
+ */
+authRouter.get('/user', auth.checkAuthenticated, (req, res) => {
+  res.send(returnUser(req.user));
+});
+
+/**
+ * @swagger
+ * /credentials:
+ *  get:
  *    summary: get current logged in user info
  *    tags: [Auth]
  *    responses:
@@ -106,13 +129,20 @@ authRouter.post('/logout', (req, res) => {
  *        content:
  *          application/json:
  *           schema:
- *            $ref: '#/components/schemas/ExtUser'
+ *            $ref: '#/components/schemas/UserWithId'
  *      401:
  *        description: Unauthorized
  *
  */
-authRouter.get('/user', auth.checkAuthenticated, (req, res) => {
-  res.send(req.user);
+authRouter.get('/credentials', auth.checkAuthenticated, (req, res) => {
+  res.send(returnUser(req.user));
 });
 
+returnUser = (user) => {
+  const returnUser = JSON.parse(JSON.stringify(user));
+  delete returnUser.password;
+  delete returnUser._id;
+  delete returnUser.__v;
+  return returnUser;
+};
 module.exports = authRouter;
