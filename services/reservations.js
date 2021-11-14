@@ -2,11 +2,11 @@ const Reservation = require('../db/models/reservation');
 const Amenity = require('../db/models/amenity');
 
 exports.getReservations = async ({ filters, sort, group }) => {
-  var reservations = await Reservation.find(filters).lean();
-  if (sort)
-    reservations = reservations.sort((a, b) =>
-      sort.asc ? a[sort.by] - b[sort.by] : b[sort.by] - a[sort.by]
-    );
+  const query = Reservation.find(filters);
+  if (sort) {
+    query.sort({ [sort.by]: sort.asc ? 'asc' : 'desc' });
+  }
+  var reservations = await query.lean();
   var amenities = await Amenity.find();
   reservations.forEach((r) => {
     const amenity = amenities[r['amenity_id']];
