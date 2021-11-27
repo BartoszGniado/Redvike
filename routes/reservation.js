@@ -48,8 +48,8 @@ reservationRouter.get(
   '/amenity/:amenityId/day/:timestamp',
   reservationService.fillAmenity,
   async (req, res) => {
-    const { amenity, timestamp } = req.params;
-    if (!amenity || !timestamp) {
+    const { amenity, amenityId, timestamp } = req.params;
+    if (!amenityId || !timestamp) {
       return res.status(400).send('Bad Request');
     }
     try {

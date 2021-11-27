@@ -22,7 +22,7 @@ exports.getReservations = async ({ filters, sort, group }) => {
 
 exports.fillAmenity = async (req, res, next) => {
   const { amenityId } = req.params;
-  if (amenityId) {
+  if (amenityId && !isNaN(Number(amenityId))) {
     const amenityInstance = (
       await Amenity.find({
         id: amenityId,
