@@ -9,7 +9,7 @@ exports.connect = () => {
   db.on('error', (error) => console.error(error));
   db.once('open', async () => {
     console.log('Connected to Database');
-    // wouldn't be needed with persistent databese
+    // wouldn't be needed with persistent database
     dataLoader.load();
   });
 };
