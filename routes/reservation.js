@@ -59,8 +59,7 @@ reservationRouter.get(
           date: timestamp,
         },
         sort: {
-          asc: true,
-          by: 'start_time',
+          start_time: 'asc',
         },
       });
       return res.send(result);
@@ -113,8 +112,7 @@ reservationRouter.get('/user/:userId', async (req, res) => {
         user_id: userId,
       },
       sort: {
-        asc: true,
-        by: 'date',
+        date: 'asc',
       },
       group: {
         by: 'date',
