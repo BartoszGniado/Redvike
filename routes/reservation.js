@@ -37,27 +37,29 @@ const reservationService = require('../services/reservations');
  *        content:
  *           application/json:
  *             schema:
- *              $ref: '#/components/schemas/ExtReservation'
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/ExtReservation'
  *      401:
  *        description: Unauthorized
  *
  */
 reservationRouter.get(
   '/amenity/:amenityId/day/:timestamp',
+  reservationService.fillAmenity,
   async (req, res) => {
-    const { amenityId, timestamp } = req.params;
+    const { amenity, amenityId, timestamp } = req.params;
     if (!amenityId || !timestamp) {
       return res.status(400).send('Bad Request');
     }
     try {
       const result = await reservationService.getReservations({
         filters: {
-          amenity_id: amenityId,
+          amenity,
           date: timestamp,
         },
         sort: {
-          asc: true,
-          by: 'start_time',
+          start_time: 'asc',
         },
       });
       return res.send(result);
@@ -110,8 +112,7 @@ reservationRouter.get('/user/:userId', async (req, res) => {
         user_id: userId,
       },
       sort: {
-        asc: true,
-        by: 'date',
+        date: 'asc',
       },
       group: {
         by: 'date',
